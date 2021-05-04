@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>FORM</title>
+    <meta charset="utf-8">
+
+
+    <style>
+        body {
+            padding: 5px;
+        }
+
+        .button {
+            background-color: white;
+            /* Green */
+            border: 2px solid black;
+            border-radius: 4px;
+            color: black;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var rows = 1
+        function addRow() {
+            /*var table = document.getElementById('ssggTable');
+            var tbody = document.getElementById('tbody');
+            var row = document.getElementById('tableRow');
+                row.getElementsByTagName('input')[0].setAttribute('cam-variable-name','fabricanteSSGG' + rows);
+                row.getElementsByTagName('input')[1].setAttribute('cam-variable-name','productoSSGG' + rows);
+                row.getElementsByTagName('input')[2].setAttribute('cam-variable-name','versionSSGG' + rows);
+                row.getElementsByTagName('select')[0].setAttribute('cam-variable-name','nivelServicioSSGG' + rows);
+                row.getElementsByTagName('select')[1].setAttribute('cam-variable-name','bolsaCreditoSSGG' + rows);
+                row.getElementsByTagName('select')[2].setAttribute('cam-variable-name','extension24x7SSGG' + rows);
+                row.getElementsByTagName('select')[3].setAttribute('cam-variable-name','alertaTempranaSSGG' + rows);
+                rows++;
+            //tbody.innerHTML += row.outerHTML;
+            //tbody.appendChild(row)*/
+            var table = document.getElementById('ssggTable');
+            var row = table.insertRow(-1);
+
+            var cell = row.insertCell(0);
+            cell.innerHTML = getCell('fabricante', 'fabricanteSSGG');
+
+            var cell = row.insertCell(1);
+            cell.innerHTML = getCell('producto', 'productoSSGG');
+
+            var cell = row.insertCell(2);
+            cell.innerHTML = getCell('version', 'versionSSGG');
+
+            var cell = row.insertCell(3);
+            cell.innerHTML = getCell('nivelServicio', 'nivelServicioSSGG');
+
+            var cell = row.insertCell(4);
+            cell.innerHTML = getCell('bolsaCredito', 'bolsaCreditoSSGG');
+
+            var cell = row.insertCell(5);
+            cell.innerHTML = getCell('extension', 'extension24x7SSGG');
+
+            var cell = row.insertCell(6);
+            cell.innerHTML = getCell('alertaTemprana', 'alertaTempranaSSGG');
+        }
+
+        function getCell(id, name) {
+            var el = document.getElementById(id);
+            el.setAttribute('cam-variable-name', name + rows);
+            return el.outerHTML;
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <form name="request-form">
+        <!--INICIO REGISTRO-->
+        <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Registro</legend>
+            <div class="form-group row">
+                <label for="fechaRegistro" class="control-label col-2">Fecha de registro</label>
+                <div class="col-10">
+                    <input type="date" required cam-variable-name="fechaRegistro" cam-variable-type="String"
+                        id="fechaRegistro" class="form-control" datepicker-popup="yyyy/MM/dd" />
+                </div>
+            </div>
+            <!---->
+            <div class="form-group row">
+                <label for="registradoPor" class="control-label col-2">Registrado por</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="registradoPor" cam-variable-type="String"
+                        id="registradoPor" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="emailRegistro" class="control-label col-2">Customer ID</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="emailRegistro" cam-variable-type="String"
+                        id="emailRegistro" class="form-control" />
+                </div>
+            </div>
+        </fieldset>
+
+        <!--DATOS PROYECTO-->
+        <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Datos del proyecto</legend>
+            <div class="form-group row">
+                <label for="areaNegocio" class="control-label col-2">Área de Negocio</label>
+                <div class="col-10">
+                    <select required cam-variable-name="areaNegocio" cam-variable-type="String" id="areaNegocio"
+                        class="form-control">
+                        <option value="desarrollo">Desarrollo</option>
+                        <option value="procesos">Procesos</option>
+                        <option value="tecnologia">Tecnología</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nombreProyecto" class="control-label col-2">Nombre del proyecto</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="nombreProyecto" cam-variable-type="String"
+                        id="nombreProyecto" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="descripcionProyecto" class="control-label col-2">Breve descripción</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="descripcionProyecto" cam-variable-type="String"
+                        id="descripcionProyecto" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="delegacion" class="control-label col-2">Delegación</label>
+                <div class="col-10">
+                    <select required cam-variable-name="delegacion" cam-variable-type="String" id="delegacion"
+                        class="form-control">
+                        <option value="centro">Centro</option>
+                        <option value="este">Este</option>
+                        <option value="noroeste">Noroeste</option>
+                        <option value="norte">Norte</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tipoProyecto" class="control-label col-2">Tipo de proyecto</label>
+                <div class="col-10">
+                    <select required cam-variable-name="tipoProyecto" cam-variable-type="String" id="tipoProyecto"
+                        class="form-control">
+                        <option value="proyecto">Proyecto</option>
+                        <option value="ssgg">SSGG</option>
+                        <option value="bolsaHoras">Bolsa de horas</option>
+                        <option value="open">Open</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="horasBolsaHoras" class="control-label col-2">Horas bolsa de horas</label>
+                <div class="col-10">
+                    <input type="number" required cam-variable-name="horasBolsaHoras" cam-variable-type="Integer"
+                        id="horasBolsaHoras" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="DuracionProyecto" class="control-label col-2">Duración del proyecto</label>
+                <div class="col-10">
+                    <input type="number" required cam-variable-name="DuracionProyecto" cam-variable-type="Integer"
+                        id="DuracionProyecto" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fechaInicioProyecto" class="control-label col-2">Fecha estimada de Inicio</label>
+                <div class="col-10">
+                    <input type="date" required cam-variable-name="fechaInicioProyecto" cam-variable-type="String"
+                        id="fechaInicioProyecto" class="form-control" datepicker-popup="yyyy-MM-dd" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fechaFinProyecto" class="control-label col-2">Fecha estimada de Fin</label>
+                <div class="col-10">
+                    <input type="date" required cam-variable-name="fechaFinProyecto" cam-variable-type="String"
+                        id="fechaFinProyecto" class="form-control" datepicker-popup="yyyy/MM/dd" />
+                </div>
+            </div>
+        </fieldset>
+
+        <!--DETALLES DEL CLIENTE-->
+
+        <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Detalles del cliente</legend>
+
+            <div class="form-group row">
+                <label for="razonSocialCliente" class="control-label col-2">Razón social</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="razonSocialCliente" cam-variable-type="String"
+                        id="razonSocialCliente" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="cifCliente" class="control-label col-2">NºCIF</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="cifCliente" cam-variable-type="String"
+                        id="cifCliente" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="direccionCliente" class="control-label col-2">Dirección</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="direccionCliente" cam-variable-type="String"
+                        id="direccionCliente" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="codigoPostalCliente" class="control-label col-2">Código Postal</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="codigoPostalCliente" cam-variable-type="String"
+                        id="codigoPostalCliente" class="form-control" />
+                </div>
+            </div>
+
+            <!---->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="provinciaCliente" class="control-label">Provincia</label>
+                    <input type="text" required cam-variable-name="provinciaCliente" cam-variable-type="String"
+                        id="provinciaCliente" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label for="paisCliente" class="control-label">País</label>
+                    <input type="text" required cam-variable-name="paisCliente" cam-variable-type="String"
+                        id="paisCliente" class="form-control" />
+                </div>
+            </div>
+
+            <!---->
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="telefonoCliente" class="control-label">Teléfono</label>
+                    <input type="text" required cam-variable-name="telefonoCliente" cam-variable-type="String"
+                        id="telefonoCliente" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                    <label for="emailCliente" class="control-label">E-mail</label>
+                    <input type="email" required cam-variable-name="emailCliente" cam-variable-type="String"
+                        id="emailCliente" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="numeroCuentaBancariaCliente" class="control-label col-2">Número de cuenta bancaria</label>
+                <div class="col-10">
+                    <input type="text" required cam-variable-name="numeroCuentaBancariaCliente"
+                        cam-variable-type="String" id="numeroCuentaBancariaCliente" class="form-control" />
+                </div>
+            </div>
+
+            <fieldset class="form-group border p-3">
+                <legend class="w-auto px-2">Persoa de contacto(Técnico)</legend>
+                <div class="form-group row">
+                    <label for="nombreTecnico" class="control-label col-2">Nombre</label>
+                    <div class="col-10">
+                        <input type="text" required cam-variable-name="nombreTecnico" cam-variable-type="String"
+                            id="nombreTecnico" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefonoTecnico" class="control-label col-2">Teléfono</label>
+                    <div class="col-10">
+                        <input type="text" required cam-variable-name="telefonoTecnico" cam-variable-type="String"
+                            id="telefonoTecnico" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="emailTecnico" class="control-label col-2">Correo</label>
+                    <div class="col-10">
+                        <input type="email" required cam-variable-name="emailTecnico" cam-variable-type="String"
+                            id="emailTecnico" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group border p-3">
+                <legend class="w-auto px-2">Persoa de contacto(Administración)</legend>
+                <div class="form-group row">
+                    <label for="nombreAdministracion" class="control-label col-2">Nombre</label>
+                    <div class="col-10">
+                        <input type="text" required cam-variable-name="nombreAdministracion" cam-variable-type="String"
+                            id="nombreAdministracion" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefonoAdministracion" class="control-label col-2">Teléfono</label>
+                    <div class="col-10">
+                        <input type="text" required cam-variable-name="telefonoAdministracion"
+                            cam-variable-type="String" id="telefonoAdministracion" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="emailAdministracion" class="control-label col-2">Correo</label>
+                    <div class="col-10">
+                        <input type="email" required cam-variable-name="emailAdministracion" cam-variable-type="String"
+                            id="emailAdministracion" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group border p-3">
+                <legend class="w-auto px-2">Dirección de envío</legend>
+                <div class="form-group row">
+                    <label for="direccionEnvio" class="control-label col-2">Dirección de envío</label>
+                    <div class="col-10">
+                        <input type="text" cam-variable-name="direccionEnvio" cam-variable-type="String"
+                            id="direccionEnvio" class="form-control" />
+                    </div>
+                </div>
+            </fieldset>
+        </fieldset>
+
+
+        <!--SSGG TABLE-->
+        <table class="table table-hover" id="ssggTable">
+            <thead>
+                <tr>
+                    <th>DATOS SSGG</th>
+                    <td colspan="6"><button class="button" onclick="addRow()">add row</button></td>
+                </tr>
+                <tr>
+                    <th>Fabricante</th>
+                    <th>Producto</th>
+                    <th>Versión</th>
+                    <th>Nivel de servicio</th>
+                    <th>Bolsa de crédito</th>
+                    <th>Extension 24x7</th>
+                    <th>Alerta temprana</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr id="tableRow">
+                    <td><input id="fabricante" type="text" style="width:100%" cam-variable-name="fabricanteSSGG"
+                            cam-variable-type="String"></td>
+                    <td><input id="producto" type="text" style="width:100%" cam-variable-name="productoSSGG"
+                            cam-variable-type="String"></td>
+                    <td><input id="version" type="text" style="width:100%" cam-variable-name="versionSSGG"
+                            cam-variable-type="String"></td>
+                    <td><select id="nivelServicio" type="text" style="width:100%" cam-variable-name="nivelServicioSSGG"
+                            cam-variable-type="String">
+                            <option value="evolucion">Evolución</option>
+                            <option value="operacion">Operación</option>
+                            <option value="soporte">Soporte</option>
+                        </select></td>
+                    <td><select id="bolsaCredito" type="text" style="width:100%" cam-variable-name="bolsaCreditoSSGG"
+                            cam-variable-type="String">
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select></td>
+                    <td><select id="extension" type="text" style="width:100%" cam-variable-name="extension24x7SSGG"
+                            cam-variable-type="String">
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select></td>
+                    <td><select id="alertaTemprana" type="text" style="width:100%" cam-variable-name="alertaTempranaSSGG"
+                            cam-variable-type="String">
+                            <option value="evolucion">Evolución</option>
+                            <option value="operacion">Operación</option>
+                            <option value="soporte">Soporte</option>
+                        </select></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!--CONSIDERACIONES TECNICAS-->
+        <div class="form-group">
+            <label for="consideracionesTecnicas" class="control-label"><strong>Consideraciones
+                    técnicas:</strong></label>
+            <textarea type="text" cam-variable-name="consideracionesTecnicas" cam-variable-type="String"
+                id="consideracionesTecnicas" class="form-control"></textarea>
+        </div>
+        <!--OBSERVACIONES-->
+        <div class="form-group">
+            <label for="observaciones" class="control-label"><strong>Observaciones:</strong></label>
+            <textarea type="text" cam-variable-name="observaciones" cam-variable-type="String"
+                id="observaciones" class="form-control"></textarea>
+        </div>
+
+        <!--DOCUMENTACION ADJUNTA-->
+        <fieldset class="form-group border p-3">
+            <legend class="w-auto px-2">Documentación adjunta</legend>
+            <!--ANALISIS ECONOMICO-->
+            <div class="row" style="margin-bottom:10px">
+                <div class="form-check col-5">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" cam-variable-name="analisisEconomicoAdjunto"
+                            cam-variable-type="Boolean" />Adjuntar análisis económico?
+                    </label>
+                </div>
+                <div class="custom-file col-5">
+                    <input type="file" class="custom-file-input" id="analisisEconomico"
+                        cam-variable-name="analisisEconomico" cam-variable-type="File">
+                </div>
+            </div>
+            <!--PROPUESTA CLIENTE-->
+            <div class="row" style="margin-bottom:10px">
+                <div class="form-check col-5">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" cam-variable-name="propuestaClienteAdjunto"
+                            cam-variable-type="Boolean" />Adjuntar propuesta del cliente?
+                    </label>
+                </div>
+                <div class="custom-file col-5">
+                    <input type="file" class="custom-file-input" id="propuestaCliente"
+                        cam-variable-name="propuestaCliente" cam-variable-type="File">
+                </div>
+            </div>
+            <!--ACEPTACION CLIENTE-->
+            <div class="row">
+                <div class="form-check col-5">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" cam-variable-name="aceptacionClienteAdjunto"
+                            cam-variable-type="Boolean" />Adjuntar aceptación del cliente?
+                    </label>
+                </div>
+                <div class="custom-file col-5">
+                    <input type="file" class="custom-file-input" id="aceptacionCliente"
+                        cam-variable-name="aceptacionCliente" cam-variable-type="File">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>
